@@ -43,8 +43,8 @@ Bạn sẽ thường tìm thấy rằng bạn cần lưu dữ liệu, cũng như
 Bây giờ sau khi đã quyết định đối tượng của trạng thái như thế nào thì sau đó chúng ta sẽ bắt đầu viết `reducer` cho nó.
 Reducer là một `pure function` (dịch là hàm thuần túy) có đầu vào là trạng thái trước đó và action, đầu ra sẽ là trạng thái tiếp theo.
 
-```js
-;(previousState, action) => newState
+```
+(previousState, action) => newState
 ```
 
 Nó được gọi là reducer bởi vì đó là loại hàm bạn cần chuyển đến (dịch hơi rối).
@@ -64,7 +64,7 @@ console.log(array1.reduce(reducer, 5));
 // expected output: 15
 ```
 
-![Reduce.png](https://useyourloaf.com/assets/images/2016/Reduce.png =500x)
+<img align="center" width="500" src="https://useyourloaf.com/assets/images/2016/Reduce.png">
 
 Một số điều bạn không bao giờ được làm bên trong reducer
 
