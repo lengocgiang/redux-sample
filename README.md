@@ -1,7 +1,5 @@
 ## Reducer
 
----
-
 Reducers xác định trạng thái ứng dụng thay đổi như thế nào để đáp ứng với các actions được gửi đến store.
 Lưu ý nhưng hành động này chỉ mô tả những gì xảy ra, nhưng không mô tả cách trạng thái trạng thái ứng dụng thay đổi.
 
@@ -36,7 +34,7 @@ Bạn sẽ thường tìm thấy rằng bạn cần lưu dữ liệu, cũng như
 
 > ##### Lưu ý cho Relationships
 >
-> In a more complex app, you're going to want different entities to reference each other. We suggest that you keep your state as normalized as possible, without any nesting. Keep every entity in an object stored with an ID as a key, and use IDs to reference it from other entities, or lists. Think of the app's state as a database. This approach is described in normalizr's documentation in detail. For example, keeping `todosById: { id -> todo }` and `todos: array<id>` inside the state would be a better idea in a real app, but we're keeping the example simple.
+> [updating]
 
 ---
 
@@ -66,7 +64,7 @@ console.log(array1.reduce(reducer, 5));
 // expected output: 15
 ```
 
-![Reduce.png](https://useyourloaf.com/assets/images/2016/Reduce.png)
+![Reduce.png](https://useyourloaf.com/assets/images/2016/Reduce.png =500x)
 
 Một số điều bạn không bao giờ được làm bên trong reducer
 
@@ -104,7 +102,7 @@ const store = createStore(todoApp, window.STATE_FROM_SERVER)
 
 ### Dispatching Actions
 
-Bây giờ chúng ta đã tạo xong `store`,
+Bây giờ chúng ta đã tạo xong `store`
 
 ## Data flow
 
@@ -135,7 +133,7 @@ Data lifecycle của bất kỳ ứng dụng sử dụng Redux đều phải tu�
 Ví dụ, `VisibleTodoList` cần tính toán `todos` để truyền vào `TodoList`, vậy chúng ta định nghĩa hàm filter `state.todos` theo `state.visibilityFilter`, và sử dụng trong `mapStateToProps`
 
 ```js
-const getVisibilityTodos = (todos, filter) => {
+const getVisibleTodos = (todos, filter) => {
   switch (filter) {
     case 'SHOW_COMPLETED':
       return todos.filter(t => t.completed)
@@ -147,10 +145,10 @@ const getVisibilityTodos = (todos, filter) => {
   }
 }
 
-const mapStateToProps = state = {
+const mapStateToProps = state => {
   return {
-  todos: getVisibilityTodos(state.todos, state.visibilityFilter)
- }
+    todos: getVisibleTodos(state.todos, state.visibilityFilter)
+  }
 }
 ```
 
@@ -177,3 +175,7 @@ const VisibleTodoList = connect(
 )(TodoList)
 export default VisibleTodoList
 ```
+
+##### Tham khảo:
+
+- useyourloaf.com
